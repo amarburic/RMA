@@ -24,7 +24,7 @@ public class Pocetni extends AppCompatActivity {
         final ArrayList<String> unosi = new ArrayList<String>();
 
         final ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, unosi);
+        adapter = new ArrayAdapter<String>(this, R.layout.element_liste, R.id.Itemname, unosi);
 
         lista.setAdapter(adapter);
 
