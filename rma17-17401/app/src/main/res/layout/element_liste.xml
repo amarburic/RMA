@@ -14,14 +14,30 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/android" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Itemname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:paddingTop="5dp"
-        android:textColor="@color/element_tekst"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/ImeMuzicara"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="5dp"
+            android:textColor="@color/element_tekst"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/Zanr"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="5dp"
+            android:textColor="@color/element_tekst"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
 
 </LinearLayout>
