@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,7 +25,7 @@ public class Dodatna extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodatna);
 
-        Muzicar m = Podaci.unosi.get(getIntent().getIntExtra("indeksAutora", 0));
+        final Muzicar m = Podaci.unosi.get(getIntent().getIntExtra("indeksAutora", 0));
 
         TextView ime = (TextView)findViewById(R.id.imeDodatna);
         TextView prezime = (TextView)findViewById(R.id.prezimeDodatna);
@@ -59,6 +60,19 @@ public class Dodatna extends AppCompatActivity {
                     startActivity(i);
                 }
 
+            }
+        });
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Intent.ACTION_SEARCH);
+                intent.setPackage("com.google.android.youtube");
+                String nazivAutora = m.getIme() + " " + m.getPrezime();
+                String nazivPjesme = (String)parent.getItemAtPosition(position);
+                intent.putExtra("query", nazivAutora + " " + nazivPjesme);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 
