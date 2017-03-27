@@ -23,10 +23,22 @@ public class Pocetni extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pocetni);
 
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        String searchBarTekst = "Something";
+
+        if (Intent.ACTION_SEND.equals(action) && type != null)
+            if ("text/plain".equals(type))
+                searchBarTekst = intent.getStringExtra(Intent.EXTRA_TEXT);
+
         Button dugme = (Button)findViewById(R.id.button);
         final TextView tekstPolje = (TextView)findViewById(R.id.editText);
         ListView lista = (ListView)findViewById(R.id.listView);
 
+
+        tekstPolje.setText(searchBarTekst);
         //Hardkodirani unosi
         final MojArrayAdapter adapter;
         adapter = new MojArrayAdapter(this, R.layout.element_liste, Podaci.unosi);
