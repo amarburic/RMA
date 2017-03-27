@@ -49,7 +49,7 @@ public class Muzicar {
         }
     }
 
-    private String ime, prezime;
+    private String ime, prezime, link;
     private Zanr zanr;
     private List<String> pjesme;
 
@@ -67,11 +67,16 @@ public class Muzicar {
 
     public Muzicar() {}
 
-    public Muzicar(String ime, String prezime, Zanr zanr) {
+    public Muzicar(String ime, String prezime, Zanr zanr, String link) {
         this.ime = ime;
         this.prezime = prezime;
         this.zanr = zanr;
+        this.link = link;
         pjesme = new ArrayList<String>();
+    }
+
+    public Muzicar(String ime, String prezime, Zanr zanr) {
+        this(ime, prezime, zanr, "");
     }
 
     public void dodajPjesmu(String p) {
@@ -83,6 +88,9 @@ public class Muzicar {
         return pjesme.subList(0, velicina);
     }
 
+    public String getLink() {
+        return link;
+    }
     private int min(int size, int i) {
         return ((size < i) ? size : i);
     }

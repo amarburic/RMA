@@ -15,10 +15,10 @@ public class Podaci {
     }
 
     static public ArrayList<Muzicar> unosi = new ArrayList<Muzicar>(Arrays.asList(
-            new Muzicar("Kurt", "Cobain", Muzicar.Zanr.GRUNGE),
-            new Muzicar("Avril", "Lavigne",  Muzicar.Zanr.PUNK),
-            new Muzicar("Tarja", "Turunen",  Muzicar.Zanr.METAL),
-            new Muzicar("Slim", "Shady", Muzicar.Zanr.RAP)
+            new Muzicar("Kurt", "Cobain", Muzicar.Zanr.GRUNGE, "www.imdb.com"),
+            new Muzicar("Avril", "Lavigne",  Muzicar.Zanr.PUNK, "www.klix.ba"),
+            new Muzicar("Tarja", "Turunen",  Muzicar.Zanr.METAL, "www.etf.unsa.ba"),
+            new Muzicar("Slim", "Shady", Muzicar.Zanr.RAP, "www.reddit.com")
     ));
 
     static {

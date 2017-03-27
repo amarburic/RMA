@@ -63,6 +63,14 @@
                     android:inputType=""
                     android:text="Name" />
 
+                <TextView
+                    android:id="@+id/linkStranice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.38"
+                    android:clickable="true"
+                    android:text="TextView" />
+
             </LinearLayout>
 
         </LinearLayout>
