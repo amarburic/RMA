@@ -1,6 +1,7 @@
 package ba.unsa.etf.rma.amar_buric.rma17_17401;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +14,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ba.unsa.etf.rma.amar_buric.rma17_17401.Kontroler.MojArrayAdapter;
+import ba.unsa.etf.rma.amar_buric.rma17_17401.Kontroler.MojReceiver;
 import ba.unsa.etf.rma.amar_buric.rma17_17401.Model.Muzicar;
 import ba.unsa.etf.rma.amar_buric.rma17_17401.Model.Podaci;
 
 public class Pocetni extends AppCompatActivity {
 
+    private IntentFilter filter = new IntentFilter("android.net.wifi.WIFI_STATE_CHANGED");
+    private MojReceiver receiver = new MojReceiver();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pocetni);
-
+        registerReceiver(receiver, filter);
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
