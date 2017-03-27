@@ -91,6 +91,12 @@ public class Muzicar {
     public String getLink() {
         return link;
     }
+
+    public String dajOpis() {
+        return String.format("Ime muzicara: %s\n Zanr: %s\n Web stranica: %s\n Top pjesma: %s",
+                ime + " " + prezime,zanr.toString(), link, pjesme.get(0));
+    }
+
     private int min(int size, int i) {
         return ((size < i) ? size : i);
     }

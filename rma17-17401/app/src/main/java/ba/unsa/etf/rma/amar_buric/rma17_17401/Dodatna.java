@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class Dodatna extends AppCompatActivity {
         ImageView ikona = (ImageView)findViewById(R.id.dodatnaSlika);
         ListView lista = (ListView)findViewById(R.id.lista);
         TextView link = (TextView)findViewById(R.id.linkStranice);
+        Button shareDugme = (Button)findViewById(R.id.share);
 
         ime.setText(m.getIme());
         prezime.setText(m.getPrezime());
@@ -71,8 +73,23 @@ public class Dodatna extends AppCompatActivity {
                 String nazivAutora = m.getIme() + " " + m.getPrezime();
                 String nazivPjesme = (String)parent.getItemAtPosition(position);
                 intent.putExtra("query", nazivAutora + " " + nazivPjesme);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+            }
+        });
+
+        shareDugme.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, m.dajOpis());
+                sendIntent.setType("text/plain");
+                if (sendIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(sendIntent);
+                }
+
             }
         });
 
