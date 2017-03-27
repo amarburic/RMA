@@ -1,8 +1,10 @@
 package ba.unsa.etf.rma.amar_buric.rma17_17401;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -40,7 +42,14 @@ public class Pocetni extends AppCompatActivity {
             }
         });
 
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(Pocetni.this, Dodatna.class);
+                myIntent.putExtra("indeksAutora", position);
+                Pocetni.this.startActivity(myIntent);
+            }
+        });
 
-
-    }
+        }
 }

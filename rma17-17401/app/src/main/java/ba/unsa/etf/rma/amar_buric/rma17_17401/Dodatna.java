@@ -22,7 +22,7 @@ public class Dodatna extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodatna);
 
-        Muzicar m = Podaci.unosi.get(0);
+        Muzicar m = Podaci.unosi.get(getIntent().getIntExtra("indeksAutora", 0));
 
         TextView ime = (TextView)findViewById(R.id.imeDodatna);
         TextView prezime = (TextView)findViewById(R.id.prezimeDodatna);
