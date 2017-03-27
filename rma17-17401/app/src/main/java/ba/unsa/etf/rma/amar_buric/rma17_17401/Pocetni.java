@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import ba.unsa.etf.rma.amar_buric.rma17_17401.Kontroler.MojArrayAdapter;
 import ba.unsa.etf.rma.amar_buric.rma17_17401.Model.Muzicar;
+import ba.unsa.etf.rma.amar_buric.rma17_17401.Model.Podaci;
 
 public class Pocetni extends AppCompatActivity {
 
@@ -24,18 +25,9 @@ public class Pocetni extends AppCompatActivity {
         final TextView tekstPolje = (TextView)findViewById(R.id.editText);
         ListView lista = (ListView)findViewById(R.id.listView);
 
-        final ArrayList<Muzicar> unosi = new ArrayList<Muzicar>();
-
         //Hardkodirani unosi
-
-        unosi.add(new Muzicar("Maso", "Karavdic", "grunge"));
-        unosi.add(new Muzicar("Rasim", "Sabanovic", "punk rock"));
-        unosi.add(new Muzicar("Amer", "Hrnjic", "folk rock"));
-        unosi.add(new Muzicar("Haris", "Osmanbegovic", "heavy metal"));
-        unosi.add(new Muzicar("Elvir", "Crncevic", "rap"));
-
         final MojArrayAdapter adapter;
-        adapter = new MojArrayAdapter(this, R.layout.element_liste, unosi);
+        adapter = new MojArrayAdapter(this, R.layout.element_liste, Podaci.unosi);
 
         lista.setAdapter(adapter);
 

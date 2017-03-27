@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,10 +45,14 @@ public class MojArrayAdapter extends ArrayAdapter<Muzicar> {
             newView = (LinearLayout)convertView;
         }
         Muzicar classInstance = getItem(position);
+        Muzicar.Zanr zanr = classInstance.getZanr();
+        int zanrResurs = ResourceLoader.dajSlikuZanra(zanr);
         TextView imePolje = (TextView)newView.findViewById(R.id.ImeMuzicara);
         imePolje.setText(classInstance.getIme() + " " +  classInstance.getPrezime());
         TextView zanrPolje = (TextView)newView.findViewById(R.id.Zanr);
-        zanrPolje.setText(classInstance.getZanr());
+        zanrPolje.setText(zanr.toString());
+        ImageView ikona = (ImageView)newView.findViewById(R.id.ZanrSlika);
+        ikona.setImageResource(zanrResurs);
         return newView;
     }
 }
