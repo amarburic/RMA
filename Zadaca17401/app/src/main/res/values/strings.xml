@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Zadaca17401</string>
+    <string name="glumciDugmeNatpis">Glumci</string>
+    <string name="reziseriDugmeNatpis">Režiseri</string>
+    <string name="zanroviDugmeNatpis">Žanrovi</string>
+</resources>
