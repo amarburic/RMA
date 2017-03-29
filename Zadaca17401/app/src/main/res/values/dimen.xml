@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="sirinaSlikeElementListe">100dp</dimen>
+    <dimen name="visinaSlikeElementListe">120dp</dimen>
+    <dimen name="profilMargin">10dp</dimen>
+    <dimen name="biografijaTopMargin">10dp</dimen>
+    <dimen name="velicinaNazivaProfil">30dp</dimen>
+    <dimen name="velicinaNazivaElementListe">20dp</dimen>
+    <dimen name="velicinaNazivaElementListeRezisera">25dp</dimen>
+    <dimen name="velicinaNazivaElementListeZanrova">20dp</dimen>
+    <dimen name="velicinaSlikeElementListeZanrova">60dp</dimen>
+</resources>

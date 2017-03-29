@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="zenskoPozadina">#ec3232</color>
+    <color name="muskoPozadina">#18c7c1</color>
+    <color name="ostaloPozadina">#40f903</color>
+    <color name="bojaTekstaNaProfilu">#ffffff</color>
+    <color name="bojaLinka">#0645AD</color>
 </resources>

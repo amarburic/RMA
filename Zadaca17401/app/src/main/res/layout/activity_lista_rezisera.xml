@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ba.unsa.etf.rma.amar_buric.zadaca17401.MainActivity">
+    tools:context="ba.unsa.etf.rma.amar_buric.zadaca17401.Aktivnosti.ListaReziseraActivity">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -18,26 +18,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonGlumci"
+                android:id="@+id/buttonGlumci2"
                 style="@style/ravnomjernaRaspodjelaHorizontalno"
                 android:text="@string/glumciDugmeNatpis"/>
 
             <Button
-                android:id="@+id/buttonReziseri"
+                android:id="@+id/buttonReziseri2"
                 style="@style/ravnomjernaRaspodjelaHorizontalno"
                 android:text="@string/reziseriDugmeNatpis" />
 
             <Button
-                android:id="@+id/buttonZanrovi"
+                android:id="@+id/buttonZanrovi2"
                 style="@style/ravnomjernaRaspodjelaHorizontalno"
                 android:text="@string/zanroviDugmeNatpis"/>
         </LinearLayout>
         <ListView
-            android:id="@+id/listGlumci"
+            android:id="@+id/listReziseri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-      />
+            />
     </LinearLayout>
-
-
 </android.support.constraint.ConstraintLayout>
