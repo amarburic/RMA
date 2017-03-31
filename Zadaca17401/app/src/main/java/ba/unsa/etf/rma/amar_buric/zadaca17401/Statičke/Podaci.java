@@ -152,7 +152,10 @@ public class Podaci {
                 "\n" +
                 "Farrow debuted at the movies in 1959 in very small roles. She was noticed for the first time in the film Rosemary's Baby (1968) by Roman Polanski. She showed her talent also on TV and at the theatre, but her final breakthrough was when she met Woody Allen and became his Muse after the film A Midsummer Night's Sex Comedy (1982). After that, Woody Allen wrote many other roles for her.");
 
-        glumci.get(11).setBiografija("John Cassavetes was born on December 9, 1929 in New York City, New York, USA as John Nicholas Cassavetes. He was an actor and director, known for Rosemary's Baby (1968), The Dirty Dozen (1967) and Opening Night (1977). He was married to Gena Rowlands. He died on February 3, 1989 in Los Angeles, California, USA.");
+        glumci.get(11).setBiografija("John Cassavetes was born on December 9, 1929 in New " + "\n" +
+                "York City, New York, USA as John Nicholas Cassavetes. He was an actor and director, " + "\n" +
+                "known for Rosemary's Baby (1968), The Dirty Dozen (1967) and Opening Night (1977). " + "\n" +
+                "He was married to Gena Rowlands. He died on February 3, 1989 in Los Angeles, California, USA.");
 
         reziseri.add(new Reziser("Ingmar", "Bergman"));
         reziseri.add(new Reziser("Quentin", "Tarantino"));
