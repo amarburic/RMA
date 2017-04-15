@@ -2,4 +2,7 @@
     <string name="app_name">rma17-17401</string>
     <string name="title_activity_dodatna">dodatna</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
