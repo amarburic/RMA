@@ -73,7 +73,7 @@ public class GlumacActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
+                Intent sendIntent = new Intent  ();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, g.getBiografija());
                 sendIntent.setType("text/plain");

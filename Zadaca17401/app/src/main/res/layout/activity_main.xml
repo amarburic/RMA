@@ -1,43 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ba.unsa.etf.rma.amar_buric.zadaca17401.MainActivity">
-    <LinearLayout
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonGlumci"
-                style="@style/ravnomjernaRaspodjelaHorizontalno"
-                android:text="@string/glumciDugmeNatpis"/>
-
-            <Button
-                android:id="@+id/buttonReziseri"
-                style="@style/ravnomjernaRaspodjelaHorizontalno"
-                android:text="@string/reziseriDugmeNatpis" />
-
-            <Button
-                android:id="@+id/buttonZanrovi"
-                style="@style/ravnomjernaRaspodjelaHorizontalno"
-                android:text="@string/zanroviDugmeNatpis"/>
-        </LinearLayout>
-        <ListView
-            android:id="@+id/listGlumci"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-      />
+        android:layout_height="wrap_content"
+        android:id="@+id/mjestoF1"></FrameLayout>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mjestoF2"></FrameLayout>
     </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>
