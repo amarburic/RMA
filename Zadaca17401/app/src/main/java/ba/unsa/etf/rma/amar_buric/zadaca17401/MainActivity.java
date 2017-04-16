@@ -1,5 +1,6 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -32,17 +33,16 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
         FragmentManager fm = getFragmentManager();
         FrameLayout ldugmad = (FrameLayout)findViewById(R.id.mjestoF1);
         DugmadFragment df = (DugmadFragment)fm.findFragmentById(R.id.mjestoF1);
-        if(df == null) {
-            df = new DugmadFragment();
-            fm.beginTransaction().replace(R.id.mjestoF1, df).commit();
-        }
+        df = new DugmadFragment();
+        fm.beginTransaction().replace(R.id.mjestoF1, df).commit();
 
-        FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
-        ListaGlumacaFragment lgf = (ListaGlumacaFragment)fm.findFragmentById(R.id.mjestoF2);
-        if(lgf == null) {
-            lgf = new ListaGlumacaFragment();
+        Fragment f = fm.findFragmentById(R.id.mjestoF2);
+        if(f == null) {
+            FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
+            ListaGlumacaFragment lgf = new ListaGlumacaFragment();
             fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
         }
+
     }
 
     @Override
@@ -51,12 +51,15 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
         FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
         if(m == DugmadFragment.Menu.Glumci) {
             ListaGlumacaFragment lgf = new ListaGlumacaFragment();
+
             fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
         } else if(m == DugmadFragment.Menu.Reziseri) {
             ListaReziseraFragment lrf = new ListaReziseraFragment();
+
             fm.beginTransaction().replace(R.id.mjestoF2, lrf).commit();
         } else if(m == DugmadFragment.Menu.Zanrovi) {
             ListaZanrovaFragment lzf = new ListaZanrovaFragment();
+
             fm.beginTransaction().replace(R.id.mjestoF2, lzf).commit();
         }
 
