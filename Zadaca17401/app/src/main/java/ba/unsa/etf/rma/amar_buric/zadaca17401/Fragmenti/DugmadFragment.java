@@ -62,9 +62,8 @@ public class DugmadFragment extends Fragment {
         Button zanrovi =(Button)getView().findViewById(R.id.buttonZanrovi);
         Button reziseri =(Button)getView().findViewById(R.id.buttonReziseri);
         Button glumci =(Button)getView().findViewById(R.id.buttonGlumci);
-
+        Button ostalo = (Button)getView().findViewById(R.id.buttonOstalo);
         obc = (OnButtonClick)getActivity();
-
 
         glumci.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,20 +71,27 @@ public class DugmadFragment extends Fragment {
                obc.onButtonClicked(Menu.Glumci);
             }
         });
-
-        zanrovi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                obc.onButtonClicked(Menu.Zanrovi);
-            }
-        });
-
-        reziseri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                obc.onButtonClicked(Menu.Reziseri);
-            }
-        });
+        if(zanrovi != null) {
+            zanrovi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    obc.onButtonClicked(Menu.Zanrovi);
+                }
+            });
+            reziseri.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    obc.onButtonClicked(Menu.Reziseri);
+                }
+            });
+        } else if(ostalo != null) {
+            ostalo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    obc.onButtonClicked(Menu.Ostalo);
+                }
+            });
+        }
 
     }
     @Override
@@ -129,7 +135,7 @@ public class DugmadFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public enum Menu {
-        Glumci, Reziseri, Zanrovi
+        Glumci, Reziseri, Zanrovi, Ostalo
     }
 
     public interface OnButtonClick {
