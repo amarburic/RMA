@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
         siriL = false;
         setContentView(R.layout.activity_main);
         FragmentManager fm = getFragmentManager();
+        fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FrameLayout ldugmad = (FrameLayout)findViewById(R.id.mjestoF1);
         DugmadFragment df = (DugmadFragment)fm.findFragmentById(R.id.mjestoF1);
         df = new DugmadFragment();
