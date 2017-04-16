@@ -13,9 +13,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/amar_buric/zadaca17401/Statičke/Podaci.java" afterPath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/amar_buric/zadaca17401/Statičke/Podaci.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="Zadaca17401.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -161,8 +158,8 @@
       <file leaf-file-name="Podaci.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/amar_buric/zadaca17401/Statičke/Podaci.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="159" column="6" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
+            <state relative-caret-position="469">
+              <caret line="162" column="2" selection-start-line="162" selection-start-column="2" selection-end-line="162" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -2601,7 +2598,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259053" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -3098,8 +3095,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/amar_buric/zadaca17401/Statičke/Podaci.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="159" column="6" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
+        <state relative-caret-position="469">
+          <caret line="162" column="2" selection-start-line="162" selection-start-column="2" selection-end-line="162" selection-end-column="2" />
           <folding />
         </state>
       </provider>
