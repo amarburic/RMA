@@ -25,28 +25,27 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
 
 public class MainActivity extends AppCompatActivity implements DugmadFragment.OnButtonClick, ListaGlumacaFragment.OnGlumacItemClick {
 
-    private boolean siriL = false;
+    private boolean siriL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        siriL = false;
         setContentView(R.layout.activity_main);
         FragmentManager fm = getFragmentManager();
         FrameLayout ldugmad = (FrameLayout)findViewById(R.id.mjestoF1);
         DugmadFragment df = (DugmadFragment)fm.findFragmentById(R.id.mjestoF1);
         df = new DugmadFragment();
         fm.beginTransaction().replace(R.id.mjestoF1, df).commit();
-        Fragment f = fm.findFragmentById(R.id.mjestoF2);
-        if(f == null) {
-            FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
-            ListaGlumacaFragment lgf = new ListaGlumacaFragment();
-            fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
-        }
         FrameLayout ldodatni  = (FrameLayout)findViewById(R.id.mjestoF3);
         if(ldodatni != null) {
             siriL = true;
-            f = fm.findFragmentById(R.id.mjestoF3);
-            if(fm.findFragmentById(R.id.mjestoF2) instanceof ListaGlumacaFragment) onGlumacItemClicked(0);
-            else onButtonClicked(DugmadFragment.Menu.Ostalo);
+            onGlumacItemClicked(0);
+        }
+        Fragment f = fm.findFragmentById(R.id.mjestoF2);
+        if(f == null || siriL) {
+            FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
+            ListaGlumacaFragment lgf = new ListaGlumacaFragment();
+            fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
         }
 
     }
@@ -55,9 +54,13 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
     public void onButtonClicked(DugmadFragment.Menu m) {
         FragmentManager fm = getFragmentManager();
         if(m == DugmadFragment.Menu.Glumci) {
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             ListaGlumacaFragment lgf = new ListaGlumacaFragment();
             fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
-            if(siriL) onGlumacItemClicked(0);
+            if(siriL) {
+                onGlumacItemClicked(0);
+
+            }
         } else if(m == DugmadFragment.Menu.Reziseri) {
             ListaReziseraFragment lrf = new ListaReziseraFragment();
             fm.beginTransaction().replace(R.id.mjestoF2, lrf).commit();
@@ -65,10 +68,12 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             ListaZanrovaFragment lzf = new ListaZanrovaFragment();
             fm.beginTransaction().replace(R.id.mjestoF2, lzf).commit();
         } else if(m == DugmadFragment.Menu.Ostalo) {
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             ListaReziseraFragment lrf = new ListaReziseraFragment();
             fm.beginTransaction().replace(R.id.mjestoF2, lrf).commit();
             ListaZanrovaFragment lzf = new ListaZanrovaFragment();
             fm.beginTransaction().replace(R.id.mjestoF3, lzf).commit();
+
         }
     }
 
@@ -81,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
         int mjesto;
         if(!siriL) mjesto = R.id.mjestoF2;
         else mjesto = R.id.mjestoF3;
-        getFragmentManager().beginTransaction().replace(mjesto, gf).addToBackStack(null).commit();
+        if(getFragmentManager().findFragmentById(mjesto) instanceof ListaGlumacaFragment)
+            getFragmentManager().beginTransaction().replace(mjesto, gf).addToBackStack(null).commit();
+        else
+            getFragmentManager().beginTransaction().replace(mjesto, gf).commit();
     }
 }
