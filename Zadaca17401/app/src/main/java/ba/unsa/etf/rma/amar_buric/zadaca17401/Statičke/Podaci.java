@@ -157,10 +157,10 @@ public class Podaci {
                 "York City, New York, USA as John Nicholas Cassavetes. He was an actor and director, " + "\n" +
                 "known for Rosemary's Baby (1968), The Dirty Dozen (1967) and Opening Night (1977). " + "\n" +
                 "He was married to Gena Rowlands. He died on February 3, 1989 in Los Angeles, California, USA.");
-
+    /*
         for(int i = 12; i <= 200; i++)
             glumci.add(glumci.get((int)(Math.random() * 11)));
-
+*/
         reziseri.add(new Reziser("Ingmar", "Bergman"));
         reziseri.add(new Reziser("Quentin", "Tarantino"));
         reziseri.add(new Reziser("Stanley", "Kubrick"));

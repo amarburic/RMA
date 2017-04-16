@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profilMainView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="ba.unsa.etf.rma.amar_buric.zadaca17401.Aktivnosti.GlumacActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/profilMargin"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageViewSlikaProfilGlumca"
+                style="@style/slikaProfilManja"
+                app:srcCompat="@drawable/no_image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewNazivProfilGlumca"
+                    style="@style/nazivProfil"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textViewDobProfilGlumca"
+                    style="@style/ravnomjernaRaspodjelaVertikalno"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textViewSpolProfilGlumca"
+                    style="@style/ravnomjernaRaspodjelaVertikalno"
+                    android:text="TextView" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewImdbLinkProfilGlumca"
+            style="@style/link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="url" />
+
+        <Button
+            android:id="@+id/buttonPodijeliProfilGlumca"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/podijeliDugme" />
+
+        <TextView
+            android:id="@+id/textViewBioProfilGlumca"
+            style="@style/biografijaProfil" />
+
+    </LinearLayout>
+</ScrollView>
