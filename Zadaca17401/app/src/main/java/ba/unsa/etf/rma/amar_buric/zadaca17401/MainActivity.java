@@ -43,12 +43,10 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             onGlumacItemClicked(0);
         }
         Fragment f = fm.findFragmentById(R.id.mjestoF2);
-        if(f == null || siriL) {
-            FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
-            ListaGlumacaFragment lgf = new ListaGlumacaFragment();
-            fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
-        }
 
+        FrameLayout lsadrzaj = (FrameLayout)findViewById(R.id.mjestoF2);
+        ListaGlumacaFragment lgf = new ListaGlumacaFragment();
+        fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
     }
 
     @Override
@@ -60,13 +58,14 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             fm.beginTransaction().replace(R.id.mjestoF2, lgf).commit();
             if(siriL) {
                 onGlumacItemClicked(0);
-
             }
         } else if(m == DugmadFragment.Menu.Reziseri) {
             ListaReziseraFragment lrf = new ListaReziseraFragment();
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fm.beginTransaction().replace(R.id.mjestoF2, lrf).commit();
         } else if(m == DugmadFragment.Menu.Zanrovi) {
             ListaZanrovaFragment lzf = new ListaZanrovaFragment();
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fm.beginTransaction().replace(R.id.mjestoF2, lzf).commit();
         } else if(m == DugmadFragment.Menu.Ostalo) {
             fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -92,4 +91,6 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
         else
             getFragmentManager().beginTransaction().replace(mjesto, gf).commit();
     }
+
+
 }

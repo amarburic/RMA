@@ -1,5 +1,7 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -185,5 +187,9 @@ public class Podaci {
         zanrovi.add(new Zanr("Triler", R.drawable.triler));
         zanrovi.add(new Zanr("Vestern", R.drawable.vestern));
 
+    }
+
+    public static void ucitajGlumceIzJsona(JSONObject js) {
+        
     }
 }

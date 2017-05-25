@@ -2,13 +2,103 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Amar.B\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="a73becf0c3ed1b99ce89e6fa1c632cf62ae50119">
-        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6be34b9ef7249c7f28bc40d7a834e7ea0296c505\classes.dex" />
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\support-annotations-25.2.0_ddf617f5ba367dcddcaf8adaac2becda2a7c6c94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\0fc5d888a0fe8d40a3cb9ca5c59267e9b03605f0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_122b81a9c5f633c65d470df517271131f7e7be65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\8909991dde14fd3aca48fbde732ec2fea9330edf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_85be86cd3bec51b0c06b689118ab7ae32c19f016.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\9ac1230e0ea933e7c7970f0c2facde7fd5bd9d97\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_7cf68e9dc711d6b38d2094f82c339d8e5184eff5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\741a68cb607b6fb41925b9317c5394609088b58e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_81e286b099415ab835cbe6cb73de0dc1a7b3b673.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\9370cb316cb2feb90b5d9eaad0fb8a3d77ad2fbf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_1e077b516159fc479aeb39938f0fdc38ad8ff674.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_818078417140f0c3155b402bbd9fb11ec6d5d415.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\b7ea5b564fd9b510f894b68ec5bc9c644a9def60\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_8ebe15ca3dbb71d6044ec020aca7874cf3eeb520.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\ac74ed1e5ec25a409ed94323aead8126b1adae7e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_d2b822491cfb85e76f4878825f6796d010b2d6de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\ce9fa86805866ad1228fedb31d4bd9b2b1ab8bc7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_96bcf2064dadf07ae977ac32cfedb51d0db32a25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\a96195fb677e0d261847f7584582ce9c84eb4cd6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_a9f1da9a1908af6d2f1d1a72e6f299464f4b3c97.jar" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +108,24 @@
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cec08b062f91e8d0ddec2148fa80b7d0100c1fa8\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Amar.B\.android\build-cache\84163fea3e28c906816f60dc25ce1efe8e310506\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_76cd56faba6bbe0dc62c02f1060f182d37a120fb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0aa0929746daba253ed60d7be3484bb62d82cd6e">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6be34b9ef7249c7f28bc40d7a834e7ea0296c505\classes.dex" />
     </item>
 
 </items>
