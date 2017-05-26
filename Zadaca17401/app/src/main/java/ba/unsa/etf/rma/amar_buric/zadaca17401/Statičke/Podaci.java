@@ -1,5 +1,6 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class Podaci {
 
     private Podaci() {
     }
-
     static String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
             "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." +
             " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex" +
@@ -34,6 +34,8 @@ public class Podaci {
             "Excepteur sint occaecat cupidatat non proident, " +
             "sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
+    public static String api_key = "63cc2a196ebe1b1694b1bcf6c3822e1e";
+    public static String jezik = "en-US";
     public static List<Glumac> glumci = new ArrayList<Glumac>();
     public static List<Reziser> reziseri = new ArrayList<Reziser>();
     public static List<Zanr> zanrovi = new ArrayList<Zanr>();
@@ -189,7 +191,55 @@ public class Podaci {
 
     }
 
-    public static void ucitajGlumceIzJsona(JSONObject js) {
-        
+    public synchronized static void ucitajGlumceIzJsona(JSONObject js) {
+        glumci.clear();
+        try {
+            JSONArray results = js.getJSONArray("results");
+            for(int i = 0; i < results.length(); i++) {
+                JSONObject actor = results.getJSONObject(i);
+                String name = actor.getString("name");
+                Integer popularity = (int)actor.getDouble("popularity");
+                glumci.add(new Glumac(R.drawable.audrey_hepburn, name.split(" ")[0], name.split(" ")[1], 1929, 1993,
+                        "Belgium", Osoba.Spol.Z, loremIpsum, popularity, 30));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public synchronized static void obrisiListuGlumaca() {
+        glumci.clear();
+    }
+
+    public synchronized static void dodajGlumcaIzJsona(JSONObject js) {
+        try {
+            String sname = js.getString("name");
+            String splaceOfBrith = Funkcije.replaceNullWithQMark(js.getString("place_of_birth"));
+            String sbirthday = js.getString("birthday");
+            String sdeathday = js.getString("deathday");
+            String simdbId = js.getString("imdb_id");
+            String spopularity = js.getString("popularity");
+            Integer igender = js.getInt("gender");
+            String biography = Funkcije.replaceNullWithSpace(js.getString("biography"));
+
+            String[] splitName = sname.split(" ");
+
+            String firstName = splitName[0];
+            String lastname = splitName[splitName.length - 1];
+            Integer yearOfBirth = Integer.parseInt(sbirthday.split("-")[0]);
+            Integer yearOfDeath = (sdeathday.length() > 0) ? Integer.parseInt(sdeathday.split("-")[0]) : -1;
+            String[] birthAddress = (splaceOfBrith.split(", ").length > splaceOfBrith.split(" - ").length)
+                    ? splaceOfBrith.split(", ") : splaceOfBrith.split(" - ");
+            String placeOfBirth = birthAddress[birthAddress.length - 1];
+            Integer popularity = (int) Double.parseDouble(spopularity);
+            Integer imdbId = Integer.parseInt(simdbId.substring(2));
+            Osoba.Spol gender = (igender == 0) ? Osoba.Spol.O : ((igender == 1) ? Osoba.Spol.Z : Osoba.Spol.M);
+
+            glumci.add(new Glumac(R.drawable.audrey_hepburn, firstName, lastname, yearOfBirth, yearOfDeath,
+                    placeOfBirth, gender, biography, popularity, imdbId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

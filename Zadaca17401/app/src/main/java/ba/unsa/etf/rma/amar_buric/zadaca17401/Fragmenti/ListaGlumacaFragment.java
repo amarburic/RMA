@@ -8,11 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import org.json.JSONObject;
 
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Kontroler.GlumacArrayAdapter;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziGlumca;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,9 +27,9 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
  * Use the {@link ListaGlumacaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListaGlumacaFragment extends Fragment {
+public class ListaGlumacaFragment extends Fragment implements TraziGlumca.onGlumacSearchDone {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -34,8 +39,16 @@ public class ListaGlumacaFragment extends Fragment {
 
     private OnGlumacItemClick ogic;
 
+    private ListView lista;
+    private GlumacArrayAdapter adapter;
     public ListaGlumacaFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public synchronized void onDone(JSONObject rezultat) {
+        Podaci.dodajGlumcaIzJsona(rezultat);
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -59,11 +72,11 @@ public class ListaGlumacaFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ListView lista = (ListView)getView().findViewById(R.id.listGlumci);
+        lista = (ListView)getView().findViewById(R.id.listGlumci);
 
         ogic = (OnGlumacItemClick)getActivity();
 
-        final GlumacArrayAdapter adapter = new GlumacArrayAdapter(getActivity(), R.layout.element_liste_glumaca,
+        adapter = new GlumacArrayAdapter(getActivity(), R.layout.element_liste_glumaca,
                 Podaci.glumci);
         lista.setAdapter(adapter);
 
@@ -72,6 +85,15 @@ public class ListaGlumacaFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                ogic.onGlumacItemClicked(position);
 
+            }
+        });
+
+        Button trazi = (Button)getView().findViewById(R.id.buttonTrazi);
+        trazi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String queryString = ((SearchView)getView().findViewById(R.id.searchViewTrazi)).getQuery().toString();
+                (new TraziGlumca(ListaGlumacaFragment.this, TraziGlumca.TipPretrage.Name)).execute(queryString);
             }
         });
     }
