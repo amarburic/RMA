@@ -47,6 +47,15 @@
         <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_81e286b099415ab835cbe6cb73de0dc1a7b3b673.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Amar.B\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10\picasso-2.5.2_22a785f16775e8af1b41f8b65e4a0bac034937e6\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Amar.B\.android\build-cache\9370cb316cb2feb90b5d9eaad0fb8a3d77ad2fbf\output\jars\classes.jar"
         jumboMode="false"

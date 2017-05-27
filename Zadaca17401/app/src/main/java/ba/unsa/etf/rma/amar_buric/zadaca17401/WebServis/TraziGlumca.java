@@ -63,7 +63,6 @@ public class TraziGlumca extends AsyncTask<String, Integer, String> {
                 JSONObject js = new JSONObject(rezultat);
                 pozivatelj.onDone(js);
                 Log.v("DEBUG", "Dodao glumca " + Podaci.dajGlumca(js.getInt("id")).dajImeIPrezime());
-                (new TraziFilm(pozivateljA, pozivateljB, js.getInt("id"))).execute();
             }
         } catch (Exception e) {
             e.printStackTrace();

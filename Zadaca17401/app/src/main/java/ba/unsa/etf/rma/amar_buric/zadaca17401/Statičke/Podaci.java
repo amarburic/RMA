@@ -43,7 +43,7 @@ public class Podaci {
     public static List<Zanr> zanrovi = new ArrayList<Zanr>();
     static
     {
-        empty = new Glumac(R.drawable.woody_allen, "", "", 0, 0, "", Osoba.Spol.O, "", 0, 0);
+        empty = new Glumac(null, "", "", 0, 0, "", Osoba.Spol.O, "", 0, 0);
         /*glumci.add(new Glumac(R.drawable.audrey_hepburn, "Audrey", "Hepburn", 1929, 1993,
                 "Belgium", Osoba.Spol.Z, loremIpsum, 9, 30));
         glumci.add(new Glumac(R.drawable.gregory_peck, "Gregory", "Peck", 1916, 2003,
@@ -208,6 +208,7 @@ public class Podaci {
             String spopularity = js.getString("popularity");
             Integer igender = js.getInt("gender");
             String biography = Funkcije.replaceNullWithSpace(js.getString("biography"));
+            String slika = "http://image.tmdb.org/t/p/w150" + js.getString("profile_path");
             Integer id = js.getInt("id");
             String[] splitName = sname.split(" ");
 
@@ -222,7 +223,7 @@ public class Podaci {
             Integer imdbId = Integer.parseInt(simdbId.substring(2));
             Osoba.Spol gender = (igender == 0) ? Osoba.Spol.O : ((igender == 1) ? Osoba.Spol.Z : Osoba.Spol.M);
 
-            glumci.add(new Glumac(id, R.drawable.audrey_hepburn, firstName, lastname, yearOfBirth, yearOfDeath,
+            glumci.add(new Glumac(id, slika, firstName, lastname, yearOfBirth, yearOfDeath,
                     placeOfBirth, gender, biography, popularity, imdbId));
         } catch (Exception e) {
             e.printStackTrace();

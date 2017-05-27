@@ -12,7 +12,7 @@ public abstract class Osoba {
         M, Z, O
     };
 
-    private int slika;
+    private String slika;
     private String ime, prezime;
     private int godinaRodjenja, godinaSmrti;
     private String mjestoRodjenja;
@@ -20,10 +20,10 @@ public abstract class Osoba {
     private String biografija;
 
     public Osoba() {
-        slika = -1;
+        slika = null;
     }
 
-    public Osoba(int slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
+    public Osoba(String slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
                  String mjestoRodjenja, Spol spol, String biografija) {
         this.slika = slika;
         this.ime = ime;
@@ -35,11 +35,11 @@ public abstract class Osoba {
         this.biografija = biografija;
     }
 
-    public int getSlika() {
+    public String getSlika() {
         return slika;
     }
 
-    public void setSlika(int slika) {
+    public void setSlika(String slika) {
         this.slika = slika;
     }
 

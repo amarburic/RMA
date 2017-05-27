@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
@@ -22,10 +24,13 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
 
 public class GlumacArrayAdapter extends ArrayAdapter<Glumac> {
 
+
     int resurs;
+    Context context;
     public GlumacArrayAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Glumac> objects) {
         super(context, resource, objects);
         resurs = resource;
+        this.context = context;
     }
 
     public View getView(int position, View convertView,
@@ -51,9 +56,11 @@ public class GlumacArrayAdapter extends ArrayAdapter<Glumac> {
         TextView rejtingGlumca = (TextView) newView.findViewById(R.id.textViewRejtingGlumca);
 
         Glumac glumac = getItem(position);
-
-        if(glumac.getSlika() != -1) {
-            slikaGlumca.setImageResource(glumac.getSlika());
+        String slikaPath = glumac.getSlika();
+        if(glumac.getSlika() != null) {
+            Picasso.with(context).load(slikaPath).into(slikaGlumca);
+        } else {
+            slikaGlumca.setImageResource(R.drawable.woody_allen);
         }
 
         nazivGlumca.setText(glumac.getIme() + " " + glumac.getPrezime());

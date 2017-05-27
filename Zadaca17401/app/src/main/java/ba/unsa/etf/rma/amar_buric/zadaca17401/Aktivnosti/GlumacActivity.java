@@ -32,7 +32,7 @@ public class GlumacActivity extends AppCompatActivity {
         TextView link = (TextView)findViewById(R.id.textViewImdbLinkProfilGlumca);
         Button podijeliDugme = (Button)findViewById(R.id.buttonPodijeliProfilGlumca);
 
-        slikaGlumca.setImageResource(g.getSlika());
+        //slikaGlumca.setImageResource(g.getSlika());
         nazivGlumca.setText(g.dajImeIPrezime());
         dobGlumca.setText("" + g.getGodinaRodjenja() + " (" + g.getMjestoRodjenja() + ")"
                 +  (g.getGodinaSmrti() == -1 ? "" : " - " + g.getGodinaSmrti()));

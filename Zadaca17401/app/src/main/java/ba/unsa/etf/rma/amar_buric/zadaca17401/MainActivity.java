@@ -22,6 +22,7 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.ListaZanrovaFragment;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Kontroler.GlumacArrayAdapter;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziFilm;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziRezisera;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziZanr;
 
@@ -97,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             getFragmentManager().beginTransaction().replace(mjesto, gf).addToBackStack(null).commit();
         else
             getFragmentManager().beginTransaction().replace(mjesto, gf).commit();
+
+        if(Podaci.glumci.size() > item)
+            (new TraziFilm(this, this, Podaci.glumci.get(item).getId())).execute();
 
         Podaci.promijeniListuZanrova(item);
         if(lzf != null)

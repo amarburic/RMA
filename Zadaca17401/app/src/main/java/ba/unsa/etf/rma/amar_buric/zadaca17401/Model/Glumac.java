@@ -20,7 +20,7 @@ public class Glumac extends Osoba {
 
     public Glumac() {}
 
-    public Glumac(int id, int slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
+    public Glumac(int id, String slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
                   String mjestoRodjenja, Spol spol, String biografija, int rejting, int imdbId) {
         super(slika, ime, prezime, godinaRodjenja, godinaSmrti, mjestoRodjenja, spol, biografija);
         this.id = id;
@@ -30,7 +30,7 @@ public class Glumac extends Osoba {
         listaZanrova = new ArrayList<Zanr>();
     }
 
-    public Glumac(int slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
+    public Glumac(String slika, String ime, String prezime, int godinaRodjenja, int godinaSmrti,
                   String mjestoRodjenja, Spol spol, String biografija, int rejting, int imdbId) {
         super(slika, ime, prezime, godinaRodjenja, godinaSmrti, mjestoRodjenja, spol, biografija);
         this.id = -1;

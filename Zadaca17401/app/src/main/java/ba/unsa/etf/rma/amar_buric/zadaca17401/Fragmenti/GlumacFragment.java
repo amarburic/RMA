@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
@@ -35,6 +37,7 @@ public class GlumacFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Context context;
     private OnFragmentInteractionListener mListener;
 
     public GlumacFragment() {
@@ -75,7 +78,12 @@ public class GlumacFragment extends Fragment {
         TextView link = (TextView)getView().findViewById(R.id.textViewImdbLinkProfilGlumca);
         Button podijeliDugme = (Button)getView().findViewById(R.id.buttonPodijeliProfilGlumca);
 
-        slikaGlumca.setImageResource(g.getSlika());
+        if(g.getSlika() != null) {
+            Picasso.with(context).load(g.getSlika()).into(slikaGlumca);
+        } else {
+            slikaGlumca.setImageResource(R.drawable.woody_allen);
+        }
+
         nazivGlumca.setText(g.dajImeIPrezime());
         dobGlumca.setText("" + g.getGodinaRodjenja() + " (" + g.getMjestoRodjenja() + ")"
                 +  (g.getGodinaSmrti() == -1 ? "" : " - " + g.getGodinaSmrti()));
@@ -153,6 +161,8 @@ public class GlumacFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+
+        this.context = context;
         super.onAttach(context);
     }
 
