@@ -63,7 +63,9 @@ public class GlumacFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(getArguments() == null) return;
-        final Glumac g = Podaci.glumci.get(getArguments().getInt("indeksGlumca", 0));
+        final Glumac g = (Podaci.glumci.isEmpty() ?
+                Podaci.empty :
+                Podaci.glumci.get(getArguments().getInt("indeksGlumca", 0)));
         ImageView slikaGlumca = (ImageView)getView().findViewById(R.id.imageViewSlikaProfilGlumca);
         TextView nazivGlumca = (TextView)getView().findViewById(R.id.textViewNazivProfilGlumca);
         TextView dobGlumca  =

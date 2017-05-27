@@ -7,13 +7,16 @@ package ba.unsa.etf.rma.amar_buric.zadaca17401.Model;
 public class Reziser {
 
     String ime, prezime;
-
+    Integer id;
     public Reziser() {}
 
-    public Reziser(String ime, String prezime) {
+    public Reziser(Integer id, String ime, String prezime) {
         this.ime = ime;
+        this.id = id;
         this.prezime = prezime;
     }
+
+    public Integer getId() { return id; }
 
     public String getIme() {
         return ime;
@@ -31,5 +34,6 @@ public class Reziser {
         this.prezime = prezime;
     }
 
+    public String getImeIPrezime() { return ime + " " + prezime; }
 
 }

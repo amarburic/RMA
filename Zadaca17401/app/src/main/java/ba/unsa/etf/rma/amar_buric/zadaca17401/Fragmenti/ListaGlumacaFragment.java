@@ -18,6 +18,8 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.Kontroler.GlumacArrayAdapter;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziGlumca;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziRezisera;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziZanr;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,7 +95,12 @@ public class ListaGlumacaFragment extends Fragment implements TraziGlumca.onGlum
             @Override
             public void onClick(View v) {
                 String queryString = ((SearchView)getView().findViewById(R.id.searchViewTrazi)).getQuery().toString();
-                (new TraziGlumca(ListaGlumacaFragment.this, TraziGlumca.TipPretrage.Name)).execute(queryString);
+                Podaci.obrisiListuGlumaca();
+                adapter.notifyDataSetChanged();
+                (new TraziGlumca(ListaGlumacaFragment.this,
+                        (TraziZanr.onZanrSearchDone)ListaGlumacaFragment.this.getActivity(),
+                        (TraziRezisera.onReziserSearchDone)ListaGlumacaFragment.this.getActivity(),
+                        TraziGlumca.TipPretrage.Name)).execute(queryString);
             }
         });
     }

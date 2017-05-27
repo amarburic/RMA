@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
@@ -36,12 +37,14 @@ public class Podaci {
 
     public static String api_key = "63cc2a196ebe1b1694b1bcf6c3822e1e";
     public static String jezik = "en-US";
+    public static Glumac empty;
     public static List<Glumac> glumci = new ArrayList<Glumac>();
     public static List<Reziser> reziseri = new ArrayList<Reziser>();
     public static List<Zanr> zanrovi = new ArrayList<Zanr>();
     static
     {
-        glumci.add(new Glumac(R.drawable.audrey_hepburn, "Audrey", "Hepburn", 1929, 1993,
+        empty = new Glumac(R.drawable.woody_allen, "", "", 0, 0, "", Osoba.Spol.O, "", 0, 0);
+        /*glumci.add(new Glumac(R.drawable.audrey_hepburn, "Audrey", "Hepburn", 1929, 1993,
                 "Belgium", Osoba.Spol.Z, loremIpsum, 9, 30));
         glumci.add(new Glumac(R.drawable.gregory_peck, "Gregory", "Peck", 1916, 2003,
                 "California", Osoba.Spol.M, loremIpsum, 9, 60));
@@ -161,10 +164,10 @@ public class Podaci {
                 "York City, New York, USA as John Nicholas Cassavetes. He was an actor and director, " + "\n" +
                 "known for Rosemary's Baby (1968), The Dirty Dozen (1967) and Opening Night (1977). " + "\n" +
                 "He was married to Gena Rowlands. He died on February 3, 1989 in Los Angeles, California, USA.");
-    /*
+        /*
         for(int i = 12; i <= 200; i++)
             glumci.add(glumci.get((int)(Math.random() * 11)));
-*/
+
         reziseri.add(new Reziser("Ingmar", "Bergman"));
         reziseri.add(new Reziser("Quentin", "Tarantino"));
         reziseri.add(new Reziser("Stanley", "Kubrick"));
@@ -188,23 +191,7 @@ public class Podaci {
         zanrovi.add(new Zanr("Romantični", R.drawable.romanticni));
         zanrovi.add(new Zanr("Triler", R.drawable.triler));
         zanrovi.add(new Zanr("Vestern", R.drawable.vestern));
-
-    }
-
-    public synchronized static void ucitajGlumceIzJsona(JSONObject js) {
-        glumci.clear();
-        try {
-            JSONArray results = js.getJSONArray("results");
-            for(int i = 0; i < results.length(); i++) {
-                JSONObject actor = results.getJSONObject(i);
-                String name = actor.getString("name");
-                Integer popularity = (int)actor.getDouble("popularity");
-                glumci.add(new Glumac(R.drawable.audrey_hepburn, name.split(" ")[0], name.split(" ")[1], 1929, 1993,
-                        "Belgium", Osoba.Spol.Z, loremIpsum, popularity, 30));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        */
     }
 
     public synchronized static void obrisiListuGlumaca() {
@@ -221,7 +208,7 @@ public class Podaci {
             String spopularity = js.getString("popularity");
             Integer igender = js.getInt("gender");
             String biography = Funkcije.replaceNullWithSpace(js.getString("biography"));
-
+            Integer id = js.getInt("id");
             String[] splitName = sname.split(" ");
 
             String firstName = splitName[0];
@@ -235,11 +222,50 @@ public class Podaci {
             Integer imdbId = Integer.parseInt(simdbId.substring(2));
             Osoba.Spol gender = (igender == 0) ? Osoba.Spol.O : ((igender == 1) ? Osoba.Spol.Z : Osoba.Spol.M);
 
-            glumci.add(new Glumac(R.drawable.audrey_hepburn, firstName, lastname, yearOfBirth, yearOfDeath,
+            glumci.add(new Glumac(id, R.drawable.audrey_hepburn, firstName, lastname, yearOfBirth, yearOfDeath,
                     placeOfBirth, gender, biography, popularity, imdbId));
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public synchronized static void dodajZanrGlumcu(Integer id, String zanr) {
+        for(Glumac g : glumci)
+            if(g.getId().equals(id)) {
+                g.dodajZanr(new Zanr(zanr, R.drawable.akcija));
+                break;
+            }
+    }
+
+    public synchronized static void dodajReziseraGlumcu(Integer id, Integer rId, String ime, String prezime) {
+        for(Glumac g : glumci)
+            if(g.getId().equals(id)) {
+                g.dodajRezisera(new Reziser(rId, ime, prezime));
+                break;
+            }
+    }
+
+
+    public static Glumac dajGlumca(Integer id) {
+        for(Glumac g : glumci)
+            if(g.getId().equals(id)) {
+                return g;
+            }
+        return null;
+    }
+
+    public static void promijeniListuZanrova(Integer index) {
+        if(glumci.size() == 0)
+            zanrovi = new ArrayList<Zanr>();
+        else
+            zanrovi = glumci.get(index).dajZanrove();
+    }
+
+    public static void promijeniListuRezisera(Integer index) {
+        if(glumci.size() == 0)
+            reziseri = new ArrayList<Reziser>();
+        else
+            reziseri = glumci.get(index).dajRezisere();
     }
 
 }

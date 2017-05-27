@@ -1,6 +1,7 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,12 +32,19 @@ public class TraziGlumca extends AsyncTask<String, Integer, String> {
         Id, Name
     }
     private onGlumacSearchDone pozivatelj;
+    private TraziZanr.onZanrSearchDone pozivateljA;
+    private TraziRezisera.onReziserSearchDone pozivateljB;
     private TipPretrage tip;
 
     public TraziGlumca() {}
 
-    public TraziGlumca(onGlumacSearchDone pozivatelj, TipPretrage tip) {
+    public TraziGlumca(onGlumacSearchDone pozivatelj,
+                       TraziZanr.onZanrSearchDone pozivateljA,
+                       TraziRezisera.onReziserSearchDone pozivateljB,
+                       TipPretrage tip) {
         this.pozivatelj = pozivatelj;
+        this.pozivateljA = pozivateljA;
+        this.pozivateljB = pozivateljB;
         this.tip = tip;
     }
 
@@ -44,15 +52,18 @@ public class TraziGlumca extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String rezultat) {
         try {
             if(tip == Name) {
-                Podaci.obrisiListuGlumaca();
                 JSONArray results = (new JSONObject(rezultat)).getJSONArray("results");
                 for(int i = 0; i < results.length(); i++) {
                     JSONObject actor = results.getJSONObject(i);
-                    String id = actor.getString("id");
-                    (new TraziGlumca(pozivatelj, Id)).execute(id);
+                    Integer id = actor.getInt("id");
+
+                    (new TraziGlumca(pozivatelj, pozivateljA, pozivateljB, Id)).execute(id + "");
                 }
             } else if(tip == Id) {
-                pozivatelj.onDone(new JSONObject(rezultat));
+                JSONObject js = new JSONObject(rezultat);
+                pozivatelj.onDone(js);
+                Log.v("DEBUG", "Dodao glumca " + Podaci.dajGlumca(js.getInt("id")).dajImeIPrezime());
+                (new TraziFilm(pozivateljA, pozivateljB, js.getInt("id"))).execute();
             }
         } catch (Exception e) {
             e.printStackTrace();

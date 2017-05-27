@@ -35,6 +35,8 @@ public class ListaReziseraFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    ReziserArrayAdapter adapter;
+
     public ListaReziseraFragment() {
         // Required empty public constructor
     }
@@ -83,7 +85,7 @@ public class ListaReziseraFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ListView lista = (ListView)getView().findViewById(R.id.listReziseri);
-        final ReziserArrayAdapter adapter = new ReziserArrayAdapter(getActivity(), R.layout.element_liste_rezisera,
+        adapter = new ReziserArrayAdapter(getActivity(), R.layout.element_liste_rezisera,
                 Podaci.reziseri);
         lista.setAdapter(adapter);
     }
@@ -97,6 +99,11 @@ public class ListaReziseraFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void notificirajAdapter() {
+        if(adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     /**

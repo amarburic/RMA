@@ -34,7 +34,7 @@ public class ListaZanrovaFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    ZanrArrayAdapter adapter;
     public ListaZanrovaFragment() {
         // Required empty public constructor
     }
@@ -61,9 +61,14 @@ public class ListaZanrovaFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ListView lista = (ListView)getView().findViewById(R.id.listZanrovi);
-        final ZanrArrayAdapter adapter = new ZanrArrayAdapter(getActivity(), R.layout.element_liste_zanrova,
+        adapter = new ZanrArrayAdapter(getActivity(), R.layout.element_liste_zanrova,
                 Podaci.zanrovi);
         lista.setAdapter(adapter);
+    }
+
+    public void notificirajAdapter() {
+        if(adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     @Override
