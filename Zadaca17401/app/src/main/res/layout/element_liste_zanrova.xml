@@ -10,7 +10,7 @@
         android:layout_width="@dimen/velicinaSlikeElementListeZanrova"
         android:layout_height="@dimen/velicinaSlikeElementListeZanrova"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/no_image" />
+         />
     <TextView
         android:id="@+id/textViewNazivZanra"
         android:layout_gravity="center"

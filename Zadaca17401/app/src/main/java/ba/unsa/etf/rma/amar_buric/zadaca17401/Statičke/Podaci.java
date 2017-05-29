@@ -223,7 +223,8 @@ public class Podaci {
             Integer imdbId = Integer.parseInt(simdbId.substring(2));
             Osoba.Spol gender = (igender == 0) ? Osoba.Spol.O : ((igender == 1) ? Osoba.Spol.Z : Osoba.Spol.M);
 
-            glumci.add(new Glumac(id, slika, firstName, lastname, yearOfBirth, yearOfDeath,
+            if(dajGlumca(id) == null)
+                glumci.add(new Glumac(id, slika, firstName, lastname, yearOfBirth, yearOfDeath,
                     placeOfBirth, gender, biography, popularity, imdbId));
         } catch (Exception e) {
             e.printStackTrace();
@@ -233,7 +234,7 @@ public class Podaci {
     public synchronized static void dodajZanrGlumcu(Integer id, String zanr) {
         for(Glumac g : glumci)
             if(g.getId().equals(id)) {
-                g.dodajZanr(new Zanr(zanr, R.drawable.akcija));
+                g.dodajZanr(new Zanr(zanr, R.drawable.no_sign));
                 break;
             }
     }

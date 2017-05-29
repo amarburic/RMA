@@ -81,7 +81,7 @@ public class GlumacFragment extends Fragment {
         if(g.getSlika() != null) {
             Picasso.with(context).load(g.getSlika()).into(slikaGlumca);
         } else {
-            slikaGlumca.setImageResource(R.drawable.woody_allen);
+            //slikaGlumca.setImageResource(R.drawable.no_image);
         }
 
         nazivGlumca.setText(g.dajImeIPrezime());
