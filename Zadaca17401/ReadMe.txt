@@ -25,5 +25,13 @@
 +++++ liste glumaca, glavne aktivnosti i detalja o glumcu jeste indeks kliknutog elementa. 
 +++++ Nije uradjeno:
 +++++ -
++++++ Spirala 3
++++++ Uradjeno: 
++++++ Uradjeni su svi zadaci. Par napomena: postoji par primjecenih problema 
++++++ sa apijem, gdje neki stringovi vracaju 500 response. Takodjer, ima pogrešnih informacija
++++++ kad je spol u pitanju (dosta requestova vraca gender 0 za osobe koje su otvoreno cissexualne)
++++++ Posto u bazi nema slika za zanrove prikazuje se no image oznaka.
++++++ -
+
 
 ++++ Napomena: Aplikacija je testirana na LG G3 sa Lollipop verzijom Androida.
