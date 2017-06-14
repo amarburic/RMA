@@ -91,6 +91,34 @@ public abstract class Osoba {
         this.spol = spol;
     }
 
+
+    public int getSpolAsInt() {
+        switch (spol) {
+            case M:
+                return 2;
+            case Z:
+                return 1;
+            case O:
+                return 0;
+        }
+        return -1;
+    }
+
+    public void satSpolAsInt(int value) {
+        switch (value) {
+            case 2:
+                spol = Spol.M;
+                break;
+            case 1:
+                spol = Spol.Z;
+                break;
+            default:
+                spol = Spol.O;
+                break;
+        }
+    }
+
+
     public String getBiografija() {
         return biografija;
     }

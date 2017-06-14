@@ -57,14 +57,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="url" />
-
-        <Button
-            android:id="@+id/buttonPodijeliProfilGlumca"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/podijeliDugme" />
-
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/buttonPodijeliProfilGlumca"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/podijeliDugme" />
+            <CheckBox
+                android:id="@+id/star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="?android:attr/starStyle" />
+        </LinearLayout>
         <TextView
             android:id="@+id/textViewBioProfilGlumca"
             style="@style/biografijaProfil" />

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -58,7 +60,7 @@ public class GlumacArrayAdapter extends ArrayAdapter<Glumac> {
         Glumac glumac = getItem(position);
         String slikaPath = glumac.getSlika();
         if(glumac.getSlika() != null) {
-            Picasso.with(context).load(slikaPath).into(slikaGlumca);
+            Glide.with(context).load(slikaPath).diskCacheStrategy(DiskCacheStrategy.ALL).into(slikaGlumca);
         } else {
             slikaGlumca.setImageResource(R.drawable.woody_allen);
         }

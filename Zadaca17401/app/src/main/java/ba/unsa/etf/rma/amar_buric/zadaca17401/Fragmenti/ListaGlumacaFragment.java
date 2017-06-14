@@ -1,6 +1,7 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -16,6 +17,7 @@ import org.json.JSONObject;
 
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Kontroler.GlumacArrayAdapter;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.BazaPodataka;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziGlumca;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziRezisera;
@@ -43,6 +45,8 @@ public class ListaGlumacaFragment extends Fragment implements TraziGlumca.onGlum
 
     private ListView lista;
     private GlumacArrayAdapter adapter;
+
+    private boolean searchIzBaze = false;
     public ListaGlumacaFragment() {
         // Required empty public constructor
     }
@@ -97,10 +101,32 @@ public class ListaGlumacaFragment extends Fragment implements TraziGlumca.onGlum
                 String queryString = ((SearchView)getView().findViewById(R.id.searchViewTrazi)).getQuery().toString();
                 Podaci.obrisiListuGlumaca();
                 adapter.notifyDataSetChanged();
-                (new TraziGlumca(ListaGlumacaFragment.this,
-                        (TraziZanr.onZanrSearchDone)ListaGlumacaFragment.this.getActivity(),
-                        (TraziRezisera.onReziserSearchDone)ListaGlumacaFragment.this.getActivity(),
-                        TraziGlumca.TipPretrage.Name)).execute(queryString);
+                if(queryString.length() >= Podaci.ACTOR_DB_QUERY_PREFIX.length() &&
+                        queryString.substring(0, Podaci.ACTOR_DB_QUERY_PREFIX.length()).equals(Podaci.ACTOR_DB_QUERY_PREFIX)) {
+
+                    String reducedQueryString = queryString.substring(Podaci.ACTOR_DB_QUERY_PREFIX.length());
+                    Cursor result = BazaPodataka.getInstance(ListaGlumacaFragment.this.getActivity()).queryGlumcaPoImenu(reducedQueryString);
+                    Podaci.dodajGlumceIzCursora(result);
+                    searchIzBaze = true;
+                    adapter.notifyDataSetChanged();
+                }
+                else if (queryString.length() >= Podaci.DIRECTOR_DB_QUERY_PREFIX.length() &&
+                        queryString.substring(0, Podaci.DIRECTOR_DB_QUERY_PREFIX.length()).equals(Podaci.DIRECTOR_DB_QUERY_PREFIX)) {
+
+                    String reducedQueryString = queryString.substring(Podaci.DIRECTOR_DB_QUERY_PREFIX.length());
+                    Cursor result = BazaPodataka.getInstance(ListaGlumacaFragment.this.getActivity()).queryGlumcaPoImenuRezisera(reducedQueryString);
+                    Podaci.dodajGlumceIzCursora(result);
+                    searchIzBaze = true;
+                    adapter.notifyDataSetChanged();
+                }
+                else {
+                    (new TraziGlumca(ListaGlumacaFragment.this,
+                            (TraziZanr.onZanrSearchDone) ListaGlumacaFragment.this.getActivity(),
+                            (TraziRezisera.onReziserSearchDone) ListaGlumacaFragment.this.getActivity(),
+                            TraziGlumca.TipPretrage.Name)).execute(queryString);
+                    searchIzBaze = false;
+                }
+                ogic.setIzBaze(searchIzBaze);
             }
         });
     }
@@ -147,5 +173,6 @@ public class ListaGlumacaFragment extends Fragment implements TraziGlumca.onGlum
     public interface OnGlumacItemClick {
         // TODO: Update argument type and name
         void onGlumacItemClicked(int item);
+        void setIzBaze(boolean izBaze);
     }
 }

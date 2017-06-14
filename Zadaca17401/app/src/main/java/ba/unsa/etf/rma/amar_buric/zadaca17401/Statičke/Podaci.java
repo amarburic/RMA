@@ -1,5 +1,7 @@
 package ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke;
 
+import android.database.Cursor;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import ba.unsa.etf.rma.amar_buric.zadaca17401.DbHelperi.GlumacDbOpenHelper;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Osoba;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Reziser;
@@ -36,6 +39,8 @@ public class Podaci {
             "sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
     public static String api_key = "63cc2a196ebe1b1694b1bcf6c3822e1e";
+    public static final String ACTOR_DB_QUERY_PREFIX = "actor:";
+    public static final String DIRECTOR_DB_QUERY_PREFIX = "director:";
     public static String jezik = "en-US";
     public static Glumac empty;
     public static List<Glumac> glumci = new ArrayList<Glumac>();
@@ -203,9 +208,17 @@ public class Podaci {
             String sname = js.getString("name");
             String splaceOfBrith = Funkcije.replaceNullWithQMark(js.getString("place_of_birth"));
             String sbirthday = js.getString("birthday");
+            if(sbirthday.equals("null"))
+                sbirthday = "0";
             String sdeathday = js.getString("deathday");
+            if(sdeathday.equals("null"))
+                sdeathday = "0";
             String simdbId = js.getString("imdb_id");
+            if(simdbId.equals("null"))
+                simdbId = "nm0";
             String spopularity = js.getString("popularity");
+            if(spopularity.equals("null"))
+                spopularity = "0";
             Integer igender = js.getInt("gender");
             String biography = Funkcije.replaceNullWithSpace(js.getString("biography"));
             String slika = "http://image.tmdb.org/t/p/w150" + js.getString("profile_path");
@@ -214,8 +227,9 @@ public class Podaci {
 
             String firstName = splitName[0];
             String lastname = splitName[splitName.length - 1];
-            Integer yearOfBirth = Integer.parseInt(sbirthday.split("-")[0]);
-            Integer yearOfDeath = (sdeathday.length() > 0) ? Integer.parseInt(sdeathday.split("-")[0]) : -1;
+
+            Integer yearOfBirth = (sbirthday.equals("null") ? -1 : Integer.parseInt(sbirthday.split("-")[0]));
+            Integer yearOfDeath = (!sdeathday.equals("0")) ? Integer.parseInt(sdeathday.split("-")[0]) : -1;
             String[] birthAddress = (splaceOfBrith.split(", ").length > splaceOfBrith.split(" - ").length)
                     ? splaceOfBrith.split(", ") : splaceOfBrith.split(" - ");
             String placeOfBirth = birthAddress[birthAddress.length - 1];
@@ -231,12 +245,64 @@ public class Podaci {
         }
     }
 
+    public synchronized static void dodajGlumceIzCursora(Cursor cs) {
+        if(cs == null || !cs.moveToFirst())
+            return;
+        do {
+            try {
+                Integer id = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_API_ID)));
+                String slika = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_SLIKA));
+                String firstName = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_IME));
+                String lastName = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_PREZIME));
+                Integer yearOfBirth = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_GODINA_RODJENJA)));
+                Integer yearOfDeath = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_GODINA_SMRTI)));
+                String placeOfBirth = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_MJESTO_RODJENJA));
+                String biography = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_BIOGRAFIJA));
+                Integer popularity = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_RATING)));
+                Integer imdbId = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_IMDB_ID)));
+                Integer igender = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.GLUMAC_SPOL)));
+                Osoba.Spol gender = (igender == 0) ? Osoba.Spol.O : ((igender == 1) ? Osoba.Spol.Z : Osoba.Spol.M);
+
+                if(dajGlumca(id) == null)
+                    glumci.add(new Glumac(id, slika, firstName, lastName, yearOfBirth, yearOfDeath,
+                            placeOfBirth, gender, biography, popularity, imdbId));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } while(cs.moveToNext());
+    }
+
     public synchronized static void dodajZanrGlumcu(Integer id, String zanr) {
         for(Glumac g : glumci)
             if(g.getId().equals(id)) {
                 g.dodajZanr(new Zanr(zanr, R.drawable.no_sign));
                 break;
             }
+    }
+
+    public synchronized static void dodajRezisereGlumcu(Integer id, Cursor cs) {
+        do {
+            Integer rId = Integer.parseInt(cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.REZISER_API_ID)));
+            String ime = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.REZISER_IME));
+            String prezime = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.REZISER_PREZIME));
+            for (Glumac g : glumci)
+                if (g.getId().equals(id)) {
+                    g.dodajRezisera(new Reziser(rId, ime, prezime));
+                    break;
+                }
+        } while(cs.moveToNext());
+    }
+
+    public synchronized static void dodajZanroveGlumcu(Integer id, Cursor cs) {
+        do {
+            String zanrNaziv = cs.getString(cs.getColumnIndexOrThrow(GlumacDbOpenHelper.ZANR_NAZIV));
+            for (Glumac g : glumci)
+                if (g.getId().equals(id)) {
+                    g.dodajZanr(new Zanr(zanrNaziv, R.drawable.no_sign));
+                    break;
+                }
+        } while(cs.moveToNext());
     }
 
     public synchronized static void dodajReziseraGlumcu(Integer id, Integer rId, String ime, String prezime) {
@@ -256,6 +322,22 @@ public class Podaci {
         return null;
     }
 
+    public static Reziser dajRezisera(Integer id) {
+        for(Reziser r : reziseri)
+            if(r.getId().equals(id)) {
+                return r;
+            }
+        return null;
+    }
+
+    public static Zanr dajZanr(String naziv) {
+        for(Zanr z : zanrovi)
+            if(z.getNaziv().equals(naziv)) {
+                return z;
+            }
+        return null;
+    }
+
     public static void promijeniListuZanrova(Integer index) {
         if(glumci.size() == 0)
             zanrovi = new ArrayList<Zanr>();
@@ -269,5 +351,6 @@ public class Podaci {
         else
             reziseri = glumci.get(index).dajRezisere();
     }
+
 
 }

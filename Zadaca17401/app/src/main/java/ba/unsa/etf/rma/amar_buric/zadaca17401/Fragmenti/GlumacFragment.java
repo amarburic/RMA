@@ -10,13 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Model.Glumac;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.R;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.BazaPodataka;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Statičke.Podaci;
 
 /**
@@ -77,9 +81,10 @@ public class GlumacFragment extends Fragment {
         TextView bioGlumca = (TextView) getView().findViewById(R.id.textViewBioProfilGlumca);
         TextView link = (TextView)getView().findViewById(R.id.textViewImdbLinkProfilGlumca);
         Button podijeliDugme = (Button)getView().findViewById(R.id.buttonPodijeliProfilGlumca);
+        final CheckBox bookmark = (CheckBox)getView().findViewById(R.id.star);
 
         if(g.getSlika() != null) {
-            Picasso.with(context).load(g.getSlika()).into(slikaGlumca);
+            Glide.with(slikaGlumca.getContext()).load(g.getSlika()).centerCrop().into(slikaGlumca);
         } else {
             //slikaGlumca.setImageResource(R.drawable.no_image);
         }
@@ -90,7 +95,7 @@ public class GlumacFragment extends Fragment {
         spolGlumca.setText(getString(g.dajResIdSpola()));
         bioGlumca.setText(g.getBiografija());
         link.setText(g.getImdbLink());
-
+        bookmark.setChecked(BazaPodataka.getInstance(this.getActivity()).jeUBaziGlumac(g.getId() + ""));
         switch (g.getSpol()) {
             case M:
                 getView().findViewById(R.id.profilMainView).setBackgroundColor(getResources().
@@ -133,6 +138,17 @@ public class GlumacFragment extends Fragment {
                     startActivity(sendIntent);
                 }
 
+            }
+        });
+
+        bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bookmark.isChecked()) {
+                    BazaPodataka.getInstance(GlumacFragment.this.getActivity()).insertGlumca(g);
+                } else {
+                    BazaPodataka.getInstance(GlumacFragment.this.getActivity()).obrisiGlumcaPoId(g.getId() + "");
+                }
             }
         });
     }

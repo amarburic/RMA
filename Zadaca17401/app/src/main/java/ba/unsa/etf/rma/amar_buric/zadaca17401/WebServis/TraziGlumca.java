@@ -62,7 +62,7 @@ public class TraziGlumca extends AsyncTask<String, Integer, String> {
             } else if(tip == Id) {
                 JSONObject js = new JSONObject(rezultat);
                 pozivatelj.onDone(js);
-                Log.v("DEBUG", "Dodao glumca " + Podaci.dajGlumca(js.getInt("id")).dajImeIPrezime());
+                //Log.v("DEBUG", "Dodao glumca " + Podaci.dajGlumca(js.getInt("id")).dajImeIPrezime());
             }
         } catch (Exception e) {
             e.printStackTrace();

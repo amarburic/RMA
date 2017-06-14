@@ -71,6 +71,10 @@ public class Glumac extends Osoba {
         return id;
     }
 
+    public Integer getImdbId() {
+        return imdbId;
+    }
+
     public List<Zanr> dajZanrove() {
         return listaZanrova;
     }

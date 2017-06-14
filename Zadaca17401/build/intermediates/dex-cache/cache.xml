@@ -74,6 +74,15 @@
         <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_818078417140f0c3155b402bbd9fb11ec6d5d415.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Amar.B\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10\commons-cli-1.2_cbce1e15119c68bdb350bbbfd848cd719b6539e5\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Amar.B\.android\build-cache\b7ea5b564fd9b510f894b68ec5bc9c644a9def60\output\jars\classes.jar"
         jumboMode="false"
@@ -90,6 +99,24 @@
         revision="25.0.2"
         sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
         <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\pre-dexed\debug\classes_d2b822491cfb85e76f4878825f6796d010b2d6de.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Amar.B\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.8.0\9bada650e1afe9c6174ddc0d113c1fce4dc26fe0\glide-3.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9bada650e1afe9c6174ddc0d113c1fce4dc26fe0">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.8.0_1081848b2310b6d3edd983a080a6abbc4b1a261f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Amar.B\.android\build-cache\cb15a1bd4d92b6b61d13afde886c14ddddf919c8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fab3c7faab3bc30df0fbf2cbebfcb21753c95260">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_146680a35aef953fba668abd17e6c77b1dae587f\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -129,11 +156,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Amar.B\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10\jsr305-2.0.1_91abd134f07d4cb11eefb5e53ab3358002005690\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d9ac5d3f44f1072cacce1c545709762b3410bdce">
+        sha1="dc9cc02e5d3ef15abd42916e7a97ce659f57e8f0">
         <dex dex="C:\Users\Amar.B\Desktop\Android\Zadaca17401\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6be34b9ef7249c7f28bc40d7a834e7ea0296c505\classes.dex" />
     </item>
 
