@@ -2,29 +2,59 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:weightSum="3">
+    android:weightSum="4">
+ <LinearLayout
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     android:layout_weight="3"
+     android:weightSum="2">
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:weightSum="2"
+         android:orientation="horizontal">
+         <Button
+             android:id="@+id/buttonGlumci"
+             android:layout_height="fill_parent"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:text="@string/glumciDugmeNatpis"/>
 
-    <Button
-        android:id="@+id/buttonGlumci"
-        android:layout_height="fill_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="@string/glumciDugmeNatpis"/>
+         <Button
+             android:id="@+id/buttonReziseri"
+             android:layout_height="fill_parent"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:text="@string/reziseriDugmeNatpis" />
+     </LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:weightSum="2"
+         android:orientation="horizontal">
+         <Button
+             android:id="@+id/buttonZanrovi"
+             android:layout_height="fill_parent"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:text="@string/zanroviDugmeNatpis"/>
+         <Button
+             android:id="@+id/buttonFilmovi"
+             android:layout_height="fill_parent"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:text="@string/filmoviDugmeNatpis"/>
+     </LinearLayout>
+ </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonReziseri"
-        android:layout_height="fill_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="@string/reziseriDugmeNatpis" />
-    <Button
-        android:id="@+id/buttonZanrovi"
-        android:layout_height="fill_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="@string/zanroviDugmeNatpis"/>
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
         android:src="@mipmap/flag"/>
 </LinearLayout>

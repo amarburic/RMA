@@ -3,6 +3,8 @@
     <string name="glumciDugmeNatpis">Glumci</string>
     <string name="reziseriDugmeNatpis">Režiseri</string>
     <string name="zanroviDugmeNatpis">Žanrovi</string>
+    <string name="filmoviDugmeNatpis">Filmovi</string>
+    <string name="zapamtiDugmeNatpis">Zapamti</string>
     <string name="ostaloDugmeNatpis">Ostalo</string>
     <string name="traziDugmeNatpis">Trazi</string>
     <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit,

@@ -62,6 +62,7 @@ public class DugmadFragment extends Fragment {
         Button zanrovi =(Button)getView().findViewById(R.id.buttonZanrovi);
         Button reziseri =(Button)getView().findViewById(R.id.buttonReziseri);
         Button glumci =(Button)getView().findViewById(R.id.buttonGlumci);
+        Button filmovi =(Button)getView().findViewById(R.id.buttonFilmovi);
         Button ostalo = (Button)getView().findViewById(R.id.buttonOstalo);
         obc = (OnButtonClick)getActivity();
 
@@ -82,6 +83,12 @@ public class DugmadFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     obc.onButtonClicked(Menu.Reziseri);
+                }
+            });
+            filmovi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    obc.onButtonClicked(Menu.Filmovi);
                 }
             });
         } else if(ostalo != null) {
@@ -135,7 +142,7 @@ public class DugmadFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public enum Menu {
-        Glumci, Reziseri, Zanrovi, Ostalo
+        Glumci, Reziseri, Zanrovi, Filmovi, Ostalo
     }
 
     public interface OnButtonClick {

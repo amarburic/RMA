@@ -19,7 +19,9 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.Aktivnosti.GlumacActivity;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Aktivnosti.ListaReziseraActivity;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Aktivnosti.ListaZanrovaActivity;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.DugmadFragment;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.FilmFragment;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.GlumacFragment;
+import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.ListaFilmovaFragment;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.ListaGlumacaFragment;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.ListaReziseraFragment;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.Fragmenti.ListaZanrovaFragment;
@@ -32,13 +34,14 @@ import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziRezisera;
 import ba.unsa.etf.rma.amar_buric.zadaca17401.WebServis.TraziZanr;
 
 public class MainActivity extends AppCompatActivity implements DugmadFragment.OnButtonClick, ListaGlumacaFragment.OnGlumacItemClick,
-        TraziZanr.onZanrSearchDone, TraziRezisera.onReziserSearchDone {
+        TraziZanr.onZanrSearchDone, TraziRezisera.onReziserSearchDone, ListaFilmovaFragment.OnFragmentInteractionListener {
 
     private boolean siriL;
     private boolean izBaze = false;
 
     ListaZanrovaFragment lzf;
     ListaReziseraFragment lrf;
+    ListaFilmovaFragment lff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             lzf = new ListaZanrovaFragment();
             fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fm.beginTransaction().replace(R.id.mjestoF2, lzf).commit();
+        } else if(m == DugmadFragment.Menu.Filmovi) {
+            lff = new ListaFilmovaFragment();
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            fm.beginTransaction().replace(R.id.mjestoF2, lff).commit();
         } else if(m == DugmadFragment.Menu.Ostalo) {
             fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             lrf = new ListaReziseraFragment();
@@ -90,6 +97,21 @@ public class MainActivity extends AppCompatActivity implements DugmadFragment.On
             fm.beginTransaction().replace(R.id.mjestoF3, lzf).commit();
 
         }
+    }
+
+    @Override
+    public void onFilmClicked(String ime) {
+        Bundle arguments = new Bundle();
+        arguments.putString("imeFilma", ime);
+        FilmFragment ff = new FilmFragment();
+        ff.setArguments(arguments);
+        int mjesto = R.id.mjestoF2;
+        if(getFragmentManager().findFragmentById(mjesto) instanceof ListaGlumacaFragment
+                || getFragmentManager().findFragmentById(mjesto) instanceof ListaFilmovaFragment)
+            getFragmentManager().beginTransaction().replace(mjesto, ff).addToBackStack(null).commit();
+        else
+            getFragmentManager().beginTransaction().replace(mjesto, ff).commit();
+
     }
 
     @Override

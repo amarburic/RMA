@@ -44,11 +44,14 @@ public class Podaci {
     public static String jezik = "en-US";
     public static Glumac empty;
     public static List<Glumac> glumci = new ArrayList<Glumac>();
+    public static List<String> filmovi = new ArrayList<String>();
     public static List<Reziser> reziseri = new ArrayList<Reziser>();
     public static List<Zanr> zanrovi = new ArrayList<Zanr>();
     static
     {
         empty = new Glumac(null, "", "", 0, 0, "", Osoba.Spol.O, "", 0, 0);
+        filmovi.add("Die Hard 1");
+        filmovi.add("Rambo 2");
         /*glumci.add(new Glumac(R.drawable.audrey_hepburn, "Audrey", "Hepburn", 1929, 1993,
                 "Belgium", Osoba.Spol.Z, loremIpsum, 9, 30));
         glumci.add(new Glumac(R.drawable.gregory_peck, "Gregory", "Peck", 1916, 2003,
@@ -201,6 +204,23 @@ public class Podaci {
 
     public synchronized static void obrisiListuGlumaca() {
         glumci.clear();
+    }
+
+    public synchronized static void obrisiListuFilmova() {
+        filmovi.clear();
+    }
+
+    public static void postaviListuFilmova(List<String> listaFilmova) {
+        obrisiListuFilmova();
+        for(String s : listaFilmova)
+            filmovi.add(s);
+    }
+
+    public static String dajImeFilma(int pos) {
+        String ime = "";
+        if(pos < filmovi.size() && pos >= 0)
+            ime = filmovi.get(pos);
+        return ime;
     }
 
     public synchronized static void dodajGlumcaIzJsona(JSONObject js) {
