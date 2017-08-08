@@ -50,8 +50,6 @@ public class Podaci {
     static
     {
         empty = new Glumac(null, "", "", 0, 0, "", Osoba.Spol.O, "", 0, 0);
-        filmovi.add("Die Hard 1");
-        filmovi.add("Rambo 2");
         /*glumci.add(new Glumac(R.drawable.audrey_hepburn, "Audrey", "Hepburn", 1929, 1993,
                 "Belgium", Osoba.Spol.Z, loremIpsum, 9, 30));
         glumci.add(new Glumac(R.drawable.gregory_peck, "Gregory", "Peck", 1916, 2003,

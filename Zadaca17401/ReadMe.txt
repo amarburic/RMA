@@ -32,6 +32,16 @@
 +++++ kad je spol u pitanju (dosta requestova vraca gender 0 za osobe koje su otvoreno cissexualne)
 +++++ Posto u bazi nema slika za zanrove prikazuje se no image oznaka.
 +++++ -
-
++++++ Naknadna napomena: Funkcionalnosti koje su radile u vremenu kada je poslana spirala
++++++ su prestale raditi nakon nekog vremena zbog nekih izmjena u samom web servisu.
++++++ Problem je u tome što je promijenjen naèin na koji se vraæaju null vrijednosti, što je uzrok toga da se ne fetchaju kako treba
++++++ svi glumci prilikom searcha. U sklopu 4. spirale je dodana izmjena kako bi search ponovo bio funkcionalan.
++++++ -
++++++ Spirala 4
++++++ Uraðene sve stavke u potpunosti osim 4. c. Dodan je kod koji traži permisije, kod koji querya
++++++ kako bi provjerio da li postoji kalendar i dodaje novi ako je to potrebno, zatim nalazi id kalendara
++++++ i dodaje event. Meðutim, iako se sav kod izvrši, event iz nekog razloga, nije i dalje vidljiv na kalendaru.
++++++ Kod je pisan po uzoru na tutorijal linkan u tekstu spirale.
++++++ Dodatak: Zadatak je na kraju uraðen korištenjem intentova.
 
 ++++ Napomena: Aplikacija je testirana na LG G3 sa Lollipop verzijom Androida.

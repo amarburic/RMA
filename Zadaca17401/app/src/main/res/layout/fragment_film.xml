@@ -19,14 +19,16 @@
     </TextView>
     <DatePicker
         android:datePickerMode="spinner"
+        android:calendarViewShown="false"
         android:id="@+id/datePickerFilm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></DatePicker>
     <EditText
-        android:id="@+id/infoFilmInput"
+        android:id="@+id/ediTextInfoFilm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
+        android:id="@+id/buttonSpasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/zapamtiDugmeNatpis"/>
